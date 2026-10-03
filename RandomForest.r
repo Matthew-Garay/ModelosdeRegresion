@@ -1,7 +1,10 @@
 #RandomForest
 #install.packages("randomForest")
 # Importar el dataset
-dataset = read.csv('Position_Salaries.csv')
+# El archivo del repositorio se llama Position_salaries.csv (s minuscula).
+# Windows no distingue mayusculas en el nombre, asi que aqui funcionaba de
+# casualidad; en Linux o macOS read.csv no lo encontraba.
+dataset = read.csv('Position_salaries.csv')
 dataset = dataset[, 2:3]
 # Dividir los datos en conjunto de entrenamiento y conjunto de test
 # install.packages("caTools")
