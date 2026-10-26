@@ -1,4 +1,4 @@
-#RandomForest
+﻿#RandomForest
 #install.packages("randomForest")
 # Importar el dataset
 # El archivo del repositorio se llama Position_salaries.csv (s minuscula).
@@ -27,19 +27,19 @@ set.seed(1234)
 regression = randomForest(x = dataset[1],
                           y = dataset$Salary,
                           ntree = 500)
-# Predicción de nuevos resultados con Regresión 
+# PredicciÃ³n de nuevos resultados con RegresiÃ³n 
 y_pred = predict(regression, newdata = data.frame(Level = 6.5))
-# Visualización del modelo de Random Forest
+# VisualizaciÃ³n del modelo de Random Forest
 #install.packages("ggplot2")
 library(ggplot2)
 x_grid = seq(min(dataset$Level), max(dataset$Level), 0.01)
 ggplot() +
   geom_point(aes(x = dataset$Level , y = dataset$Salary),
-             color = "red") +
+             color = "#2C3E50") +
   geom_line(aes(x = x_grid, y = predict(regression, 
                                         newdata = data.frame(Level = x_grid))),
-            color = "blue") +
-  ggtitle("Predicción (Random Forest)") +
+            color = "#7F8C8D") +
+  ggtitle("PredicciÃ³n (Random Forest)") +
   xlab("Nivel del empleado") +
   ylab("Sueldo (en $)")
 
