@@ -1,78 +1,67 @@
-<div align="center">
+# Modelos de Regresion Random Forest vs Arbol de Decision
 
-# Modelos de Regresión: Random Forest vs. Árbol de Decisión
+## A. Titulo del Proyecto y Resumen Ejecutivo
 
-**Práctica de Inteligencia Artificial en R** — comparación de dos algoritmos para la predicción de sueldos.
+Modelos de Regresion: Random Forest vs Arbol de Decision es una practica de Inteligencia Artificial en R que compara dos tecnicas para predecir el sueldo: un Random Forest y un arbol de regresion (rpart), cada uno con su propio dataset. El problema que resuelve es contrastar el comportamiento y la interpretabilidad de ambos algoritmos de ensamble y particion recursiva para la estimacion de sueldos. Su alcance tecnologico se limita al analisis predictivo local en R, sin componente de servidor ni persistencia de datos.
 
-[![R](https://img.shields.io/badge/R-4.x-276DC3?style=flat-square)](https://www.r-project.org/)
-[![RandomForest](https://img.shields.io/badge/RandomForest-4.6-6f42c1?style=flat-square)]()
-[![rpart](https://img.shields.io/badge/rpart-%C3%81rbol%20de%20Decisi%C3%B3n-2ea44f?style=flat-square)]()
+## B. Arquitectura del Sistema
 
-</div>
+El programa sigue una arquitectura de scripts independientes en R. Existen dos puntos de entrada separados: P15.R modela el sueldo segun los anos de experiencia utilizando el dataset Salary_Data.csv, aplicando Random Forest y arbol de decision; RandomForest.r modela el sueldo segun el nivel del empleado utilizando el dataset Position_salaries.csv, aplicando Random Forest. Cada script carga su dataset, entrena el modelo correspondiente, genera predicciones de ejemplo y visualiza los resultados con ggplot2 y rpart.plot. No existe comunicacion entre los scripts ni arquitectura cliente-servidor; todo el procesamiento ocurre de forma aislada en cada ejecucion.
 
----
+## C. Caracteristicas Tecnicas Clave
 
-## Descripción
+- Random Forest con 500 arboles (ntree = 500) sobre dos datasets distintos.
+- Arbol de regresion con rpart y visualizacion con rpart.plot.
+- Predicciones de ejemplo, por ejemplo sueldo con 6.5 anos de experiencia.
+- Visualizacion de curvas ajustadas con ggplot2 sobre una malla fina.
+- Dos datasets: Salary_Data.csv (anos de experiencia) y Position_salaries.csv (nivel del empleado).
+- No utiliza base de datos, ni concurrencia, ni procesamiento en tiempo real, ni protocolos de red.
+- Seguridad limitada al ambito de ejecucion local; no maneja datos sensibles ni autenticacion.
 
-Compara dos técnicas para predecir el **sueldo**: un **Random Forest** y un **árbol de regresión (rpart)**, cada una en su propio script con su dataset. `P15.R` modela el sueldo según los años de experiencia; `RandomForest.r` lo hace según el nivel del empleado.
+## D. Especificacion del Stack Tecnologico
 
-Es una práctica académica de Inteligencia Artificial para contrastar el comportamiento y la interpretabilidad de ambos algoritmos de ensamble y partición recursiva.
+| Categoria | Tecnologia / Librería |
+|-----------|----------------------|
+| Lenguaje | R |
+| Paquetes | randomForest, rpart, rpart.plot, ggplot2 |
+| Datasets | Salary_Data.csv, Position_salaries.csv |
+| Analisis | Random Forest, arbol de decision, regresion |
 
-## Características
+## E. Guia de Instalacion, Configuracion y Despliegue
 
-- **Random Forest** con 500 árboles (`ntree = 500`) sobre dos datasets distintos.
-- **Árbol de regresión** con `rpart` y visualización con `rpart.plot`.
-- **Predicciones de ejemplo** (e.g., sueldo con 6.5 años de experiencia).
-- **Visualización** de curvas ajustadas con ggplot2 sobre una malla fina.
+### Requisitos previos del sistema
 
-## Tecnologías utilizadas
+- R o RStudio instalado en el sistema operativo.
+- Paquetes randomForest, rpart, rpart.plot y ggplot2 instalados en R.
 
-- **Lenguaje:** R
-- **Paquetes:** randomForest, rpart, rpart.plot, ggplot2
-- **Datasets:** `Salary_Data.csv` (años de experiencia) y `Position_salaries.csv` (nivel)
-
-## Requisitos previos
-
-- [R](https://www.r-project.org/) o [RStudio](https://posit.co/download/rstudio-desktop/).
-- Paquetes `randomForest`, `rpart`, `rpart.plot` y `ggplot2`.
-
-## Instalación
+### Secuencia de comandos para clonacion e instalacion
 
 ```bash
 git clone https://github.com/Matthew-Garay/ModelosdeRegresion.git
 cd ModelosdeRegresion
 ```
 
-Instala los paquetes si no los tienes:
+### Configuracion de variables de entorno
+
+Este proyecto no requiere archivo .env ni variables de entorno.
+
+### Comandos para ejecucion en entorno de Desarrollo
 
 ```r
 install.packages(c("randomForest", "rpart", "rpart.plot", "ggplot2"))
 ```
 
-## Uso
-
 ```r
-source("P15.R")          # Random Forest y árbol sobre Salary_Data.csv
-source("RandomForest.r") # Random Forest sobre Position_salaries.csv
+source("P15.R")
+source("RandomForest.r")
 ```
 
-## Estructura del proyecto
+### Comandos para ejecucion en entorno de Produccion
 
-```
-ModelosdeRegresion/
-├── P15.R                          # Random Forest + árbol (Salary_Data.csv)
-├── RandomForest.r                 # Random Forest (Position_salaries.csv)
-├── Salary_Data.csv                # Dataset de años de experiencia
-├── Position_salaries.csv          # Dataset de nivel del empleado
-├── Practica 15. Random Forest y RPART.pdf   # Memoria de la práctica
-└── README.md
-```
+No aplica entorno de produccion separado; los scripts se ejecutan localmente con el mismo comando de desarrollo.
 
-## Licencia
+## F. Creditos de Autoría
 
-Proyecto académico y educativo; puedes usarlo libremente con fines de aprendizaje.
-
-## Autor
-
-**Matthew Garay** — [GitHub](https://github.com/Matthew-Garay)
+Desarrollado por: Matthew Ilveneff Garay Pérez
+Correo Electronico: 1911.garay.perez@gmail.com
 
